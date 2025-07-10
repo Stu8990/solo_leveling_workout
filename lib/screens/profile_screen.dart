@@ -43,11 +43,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'hunter_level': widget.userProgress.hunterLevel,
       'current_streak': widget.userProgress.currentStreak,
       'total_exercises_completed':
-          widget.userProgress.completedWorkouts.length * 4, // Estimación
+          widget.userProgress.completedWorkouts.length *
+              5, // Ahora son 5 categorías
       'pushups_completed':
           (widget.userProgress.exerciseLevels['Empuje'] ?? 1) > 1 ? 1 : 0,
       'pullups_completed':
           (widget.userProgress.exerciseLevels['Jalón'] ?? 1) > 1 ? 1 : 0,
+      'cardio_completed':
+          (widget.userProgress.exerciseLevels['Cardio'] ?? 1) > 1 ? 1 : 0,
       'perfect_days_streak': 0, // Por implementar
       'night_workouts': 0, // Por implementar
     };
@@ -439,6 +442,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       case 'Core':
         typeColor = const Color(0xFF8b5cf6);
         typeIcon = Icons.self_improvement;
+        break;
+      case 'Cardio':
+        typeColor = const Color(0xFF06b6d4);
+        typeIcon = Icons.directions_run;
         break;
       default:
         typeColor = Colors.grey;

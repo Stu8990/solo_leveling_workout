@@ -17,9 +17,15 @@ class UserProgress {
     List<String>? completedWorkouts,
     this.currentStreak = 0,
     this.lastWorkoutDate,
-  }) : exerciseLevels =
-           exerciseLevels ?? {'Empuje': 1, 'Jalón': 1, 'Piernas': 1, 'Core': 1},
-       completedWorkouts = completedWorkouts ?? [];
+  })  : exerciseLevels = exerciseLevels ??
+            {
+              'Empuje': 4, // Basado en tus 25 push-ups
+              'Jalón': 3, // Basado en tus 5-7 chin-ups
+              'Piernas': 3, // Nivel estimado
+              'Core': 3, // Nivel estimado
+              'Cardio': 4, // Basado en tus 7km
+            },
+        completedWorkouts = completedWorkouts ?? [];
 
   // Añadir XP y verificar si subió de nivel
   bool addXP(int xp) {
@@ -100,21 +106,34 @@ class UserProgress {
 
   // Crear desde Map
   static UserProgress fromJson(Map<String, dynamic> json) {
+    // Manejar transición de formato anterior a nuevo
+    Map<String, int> exerciseLevels = Map<String, int>.from(
+      json['exerciseLevels'] ??
+          {
+            'Empuje': 4, // Niveles actualizados por defecto
+            'Jalón': 3,
+            'Piernas': 3,
+            'Core': 3,
+            'Cardio': 4,
+          },
+    );
+
+    // Añadir Cardio si no existe (para usuarios existentes)
+    if (!exerciseLevels.containsKey('Cardio')) {
+      exerciseLevels['Cardio'] = 4; // Tu nivel actual de 7km
+    }
+
     return UserProgress(
       hunterLevel: json['hunterLevel'] ?? 1,
       totalXP: json['totalXP'] ?? 0,
       currentXP: json['currentXP'] ?? 0,
       xpToNextLevel: json['xpToNextLevel'] ?? 100,
-      exerciseLevels: Map<String, int>.from(
-        json['exerciseLevels'] ??
-            {'Empuje': 1, 'Jalón': 1, 'Piernas': 1, 'Core': 1},
-      ),
+      exerciseLevels: exerciseLevels,
       completedWorkouts: List<String>.from(json['completedWorkouts'] ?? []),
       currentStreak: json['currentStreak'] ?? 0,
-      lastWorkoutDate:
-          json['lastWorkoutDate'] != null
-              ? DateTime.parse(json['lastWorkoutDate'])
-              : null,
+      lastWorkoutDate: json['lastWorkoutDate'] != null
+          ? DateTime.parse(json['lastWorkoutDate'])
+          : null,
     );
   }
 
