@@ -1,16 +1,27 @@
-# solo_leveling_workout
+# Solo Leveling Workout
 
-A new Flutter project.
+¡Conviértete en el cazador más fuerte mientras entrenas!
 
-## Getting Started
+Solo Leveling Workout es una aplicación Flutter inspirada en el universo de **Solo Leveling**. Genera rutinas diarias adaptadas a tu progreso, lleva la cuenta de tu experiencia y mantén viva tu racha de entrenamientos.
 
-This project is a starting point for a Flutter application.
+## Características
+- Rutinas diarias generadas según tu nivel.
+- Seguimiento de experiencia y niveles de cazador.
+- Temporizador de descanso integrado para cada ejercicio.
+- Histórico de entrenamientos y racha diaria.
+- Perfil del usuario con estadísticas detalladas.
+- Interfaz oscura y tipografía al estilo Solo Leveling.
 
-A few resources to get you started if this is your first Flutter project:
+## Instalación
+1. Asegúrate de tener [Flutter](https://docs.flutter.dev/get-started/install) configurado.
+2. Clona este repositorio y ejecuta `flutter pub get` para descargar las dependencias.
+3. Inicia la aplicación con `flutter run` en tu dispositivo o emulador favorito.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Pruebas
+Lanza `flutter test` para ejecutar las pruebas de widgets y asegurarte de que todo funciona correctamente.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contribuir
+¡Las aportaciones son bienvenidas! Crea un _issue_ o envía un _pull request_ si deseas mejorar el proyecto.
+
+## Licencia
+Este proyecto se distribuye bajo la licencia MIT.
